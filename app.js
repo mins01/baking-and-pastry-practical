@@ -2,7 +2,9 @@ const { createApp, watch, reactive } = Vue;
 const { createRouter, createWebHistory, useRoute, useRouter } = VueRouter;
 
 const router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(),
+  history: VueRouter.createWebHashHistory(),
+
   routes: [
     {
       path: '/',
@@ -59,27 +61,35 @@ const app = createApp({
     );
 
     watch(
-      () => route.query.q1,
-      (value) => {
-        const newValue = value ?? '';
-
-        if (data.q1 !== newValue) {
-          data.q1 = newValue;
-        }
+      () => route.query,
+      (query) => {
+        data.q1 = query.q1 ?? '';
+        data.q2 = query.q2 ?? '';
       },
       { immediate: true }
     );
-    watch(
-      () => route.query.q2,
-      (value) => {
-        const newValue = value ?? '';
+    // watch(
+    //   () => route.query.q1,
+    //   (value) => {
+    //     const newValue = value ?? '';
 
-        if (data.q2 !== newValue) {
-          data.q2 = newValue;
-        }
-      },
-      { immediate: true }
-    );
+    //     if (data.q1 !== newValue) {
+    //       data.q1 = newValue;
+    //     }
+    //   },
+    //   { immediate: true }
+    // );
+    // watch(
+    //   () => route.query.q2,
+    //   (value) => {
+    //     const newValue = value ?? '';
+
+    //     if (data.q2 !== newValue) {
+    //       data.q2 = newValue;
+    //     }
+    //   },
+    //   { immediate: true }
+    // );
 
     function changePage(page) {
       router.push({

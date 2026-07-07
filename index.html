@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <title>제과 제빵 기능사 실기 시험</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="http://www.mins01.com/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- <script src="/js/ForGoogle.js"></script> -->
+  <!-- google analytics -->
+  <script> 
+    if (window.ForGoogle) { ForGoogle.analytics() } else { console.log("failure : ForGoogle.analytics()"); } 
+  </script>
+
+
+  <!-- 부트스트랩 5.3.x -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> -->
+
+  <!-- vue.js -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <!-- 개발용 (Development) -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <!-- 배포용 (Production) -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
+  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script>
+
+
+  <!-- 페이지 데이터 -->
+  <script src="pageData.js"></script>
+
+  <!-- meta og -->
+
+  <meta property="og:title" content="제과 제빵 기능사 실기 시험">
+  <meta property="og:description" content="제과 제빵 기능사 실기 시험">
+  <meta property="og:image" content="http://www.mins01.com/img/logo.gif">
+  <meta property="og:image:width" content="190">
+  <meta property="og:image:height" content="70" />
+  <meta property="og:site_name" content="제과 제빵 실기 시험" />
+  <meta property="og:type" content="website">
+
+  <!-- //meta og -->
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="app" class="my-3">
+      <h1>제과 제빵 기능사 실기 시험</h1>
+      <div class="card">
+        <div class="card-header">제빵/제과 선택</div>
+        <div class="card-body">
+          <div class="form-label">제과/제빵</div>
+          <select class="form-select" v-model="data.q1">
+            <option value="">#제과/제빵 - 문제 선택#</option>
+            <option
+              v-for="(cat1, key) in data.categories"
+              :key="key"
+              :value="key"
+            >
+              {{ cat1.label }} ( {{cat1.questions.length}} )
+            </option>
+          </select>
+          
+          <template v-if="data.categories[data.q1]">
+            <div v-if="data.categories[data.q1]?.questions">
+              <hr>
+              <h5>문제</h5>
+              <select class="form-select" v-model="data.q2">
+                <option value="">#{{data.categories[data.q1].label}} 문제 선택 ( {{data.categories[data.q1]?.questions.length}} )#</option>
+                <option
+                  v-for="(question, idx) in data.categories[data.q1]?.questions"
+                  :key="question.key"
+                  :value="question.key"
+                >
+                  <!-- {{ question.key }} -->
+                  {{ question.number }}. 
+                  {{ question.label }} 
+                  {{data.questions?.[question.key].BP_dough?'(재료)':'' }}
+                  {{data.hints?.[question.key]?'(힌트)':'' }}
+                </option>
+              </select>
+            </div>
+            <div v-if="data.categories[data.q1]?.links">
+              <hr>
+              <h5>참고링크</h5>
+              <div class="list-group" >
+                <a v-for="link in data.categories[data.q1].links" :href="link.url" target="_blank" class="list-group-item list-group-item-action " >{{link.label}} 🔗</a>
+              </div>
+            </div>
+          </template>
+          <!-- {{data.q1}} -->
+
+        </div>
+      </div>
+
+      <div class="card my-3" v-if="currentQuestion">
+        <div class="card-header">과제명 : {{currentQuestion.label}}</div>
+        <div class="card-body">
+          <div class="mb-3">
+            <b>※시험시간 : {{ currentQuestion.duration??'시험시간 입력 필요' }}</b>
+          </div>
+
+          <div>
+            <h4>요구사항</h4>
+            <div>
+              <ul class="list-unstyled">
+                <li v-for="requirement in currentQuestion.requirements">{{requirement}}</li>
+              </ul>
+            </div>
+
+          </div>
+          <div>
+            <h4>재료</h4>
+            <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+              <colgroup>
+                <col width="150">
+                <col width="150">
+                <col width="150">
+              </colgroup>
+              <thead>
+                <tr class="text-center table-success">
+                  <th>비율(%)</th>
+                  <th>재료명</th> 
+                  <th>무게(g)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="BPItem in currentQuestion.BP_dough">
+                  <td class="text-end">{{BPItem[0]}}</td>
+                  <td class="text-center">{{BPItem[1]}}</td> 
+                  <td class="text-end">{{BPItem[2]}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <div v-if="currentQuestion.BP_topping && currentQuestion.BP_topping.length">
+              <div class="text-center">(※ 토핑 및 충전물(계량시간에서 제외))</div>
+              <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+                <colgroup>
+                  <col width="150">
+                  <col width="150">
+                  <col width="150">
+                </colgroup>
+                <tbody>
+                  <tr v-for="BPItem in currentQuestion.BP_topping">
+                    <td class="text-end">{{BPItem[0]}}</td>
+                    <td class="text-center">{{BPItem[1]}}</td> 
+                    <td class="text-end">{{BPItem[2]}}</td>
+                  </tr>
+                </tbody>
+                
+              </table>
+            </div>
+          </div>
+          
+          <div>
+            <hr>
+            <h4>힌트</h4>
+            <div>
+              <ul >
+                <li v-for="hint in currentHints">{{hint}}</li>
+                <li v-if="!currentHints" class="text-info">아직 힌트가 없습니다.</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+
+
+  <script src="app.js">
+    
+  </script>
+</body>
+
+</html>

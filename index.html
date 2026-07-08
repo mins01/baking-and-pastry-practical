@@ -104,31 +104,36 @@
           </div>
           <div>
             <h4>재료</h4>
-            <table class="table table-bordered table-sm mx-auto" style="width:auto;">
-              <colgroup>
-                <col width="150">
-                <col width="150">
-                <col width="150">
-              </colgroup>
-              <thead>
-                <tr class="text-center table-success">
-                  <th>비율(%)</th>
-                  <th>재료명</th> 
-                  <th>무게(g)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="BPItem in currentQuestion.BP_dough">
-                  <td class="text-end">{{BPItem[0]}}</td>
-                  <td class="text-center">{{BPItem[1]}}</td> 
-                  <td class="text-end">{{BPItem[2]}}</td>
-                </tr>
-              </tbody>
-            </table>
+            <div>
+              <h5 class="text-center">
+                {{currentQuestion.BP_dough_title??'반죽'}}
+              </h5>
+              <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+                <colgroup>
+                  <col width="150">
+                  <col width="150">
+                  <col width="150">
+                </colgroup>
+                <thead>
+                  <tr class="text-center table-success">
+                    <th>비율(%)</th>
+                    <th>재료명</th> 
+                    <th>무게(g)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="BPItem in currentQuestion.BP_dough">
+                    <td class="text-end">{{BPItem[0]}}</td>
+                    <td class="text-center">{{BPItem[1]}}</td> 
+                    <td class="text-end">{{BPItem[2]}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div v-if="currentQuestion.BP_topping && currentQuestion.BP_topping.length">
-              <div class="text-center">
-                {{currentQuestion.BP_topping_title??'(※ 토핑 및 충전물(계량시간에서 제외))'}}
-              </div>
+              <h5 class="text-center">
+                {{currentQuestion.BP_topping_title??'(토핑 (계량시간에서 제외))'}}
+              </h5>
               <table class="table table-bordered table-sm mx-auto" style="width:auto;">
                 <colgroup>
                   <col width="150">

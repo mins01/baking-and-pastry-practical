@@ -126,7 +126,9 @@
               </tbody>
             </table>
             <div v-if="currentQuestion.BP_topping && currentQuestion.BP_topping.length">
-              <div class="text-center">(※ 토핑 및 충전물(계량시간에서 제외))</div>
+              <div class="text-center">
+                {{currentQuestion.BP_topping_title??'(※ 토핑 및 충전물(계량시간에서 제외))'}}
+              </div>
               <table class="table table-bordered table-sm mx-auto" style="width:auto;">
                 <colgroup>
                   <col width="150">

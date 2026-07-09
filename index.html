@@ -159,7 +159,7 @@
               <ul >
                 <li v-for="(hint, key) in currentHints" :key="key">
                   <a v-if="typeof hint === 'string' && hint.startsWith('http')" :href="hint" target="_blank">{{hint}}</a>
-                  <span v-else>{{hint}}</span>
+                  <span v-else style="white-space: break-spaces">{{hint}}</span>
                 </li>
                 <li v-if="!currentHints" class="text-info">아직 힌트가 없습니다.</li>
               </ul>

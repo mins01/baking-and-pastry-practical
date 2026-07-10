@@ -207,11 +207,14 @@
                   <h4>{{category.label}}</h4>
                   <div class="d-flex flex-wrap">
                     <div v-for="question in category.questions" class="col-12 col-lg-6 p-1" >
-                      <button type="button" class="btn btn-outline-primary btn-sm" :class="{ active: data.q2 === question.key }" @click="data.q2=question.key;">
-                        {{ question.number }}. 
-                        {{ question.label }} 
-                        <i class="ms-1 bi bi-list-check" v-if="data.questions?.[question.key].BP_dough" title="재료목록"></i>
-                        <i class="ms-1 bi bi-question-octagon-fill" v-if="data.hints?.[question.key]" title="힌트"></i>
+                      <button type="button" class="w-100 btn btn-outline-primary btn-md" :class="{ active: data.q2 === question.key }" @click="data.q2=question.key;">
+                        <div class="d-flex justify-content-between" >
+                          <div>{{ question.number }}. {{ question.label }} </div>
+                          <div>
+                            <i class="ms-1 bi bi-list-check" v-if="data.questions?.[question.key].BP_dough" title="재료목록"></i>
+                            <i class="ms-1 bi bi-question-octagon-fill" v-if="data.hints?.[question.key]" title="힌트"></i>                          
+                          </div>
+                        </div>
                       </button>
                     </div>
                   </div>

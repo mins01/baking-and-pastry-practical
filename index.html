@@ -26,6 +26,12 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
+
+
+  <!-- linkify -->
+  <script src="https://unpkg.com/linkifyjs/dist/linkify.min.js"></script>
+  <script src="https://unpkg.com/linkify-html/dist/linkify-html.min.js"></script>
+
   <!-- vue.js -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
   <!-- 개발용 (Development) -->
@@ -38,6 +44,8 @@
   <!-- 뷰 라우트 -->
   <!-- <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script> -->
   <script src="https://unpkg.com/vue-router@4.6.4/dist/vue-router.global.prod.js"></script>
+
+  
 
 
   <!-- 페이지 데이터 -->
@@ -158,8 +166,11 @@
             <div>
               <ul >
                 <li v-for="(hint, key) in currentHints" :key="key">
-                  <a v-if="typeof hint === 'string' && hint.startsWith('http')" :href="hint" target="_blank">{{hint}}</a>
-                  <span v-else style="white-space: break-spaces">{{hint}}</span>
+                  <!-- <a v-if="typeof hint === 'string' && hint.startsWith('http')" :href="hint" target="_blank">{{hint}}</a>
+                  <span v-else style="white-space: break-spaces">{{hint}}</span> -->
+                  <div v-html="linkify(hint)"  style="white-space: break-spaces"></div>
+                  
+
                 </li>
                 <li v-if="!currentHints" class="text-info">아직 힌트가 없습니다.</li>
               </ul>
@@ -207,7 +218,7 @@
                   <h4>{{category.label}}</h4>
                   <div class="d-flex flex-wrap">
                     <div v-for="question in category.questions" class="col-12 col-lg-6 p-1" >
-                      <button type="button" class="w-100 btn btn-outline-primary btn-md" :class="{ active: data.q2 === question.key }" @click="data.q2=question.key;">
+                      <button type="button"  data-bs-dismiss="modal" class="w-100 btn btn-outline-primary btn-md" :class="{ active: data.q2 === question.key }" @click="data.q2=question.key;">
                         <div class="d-flex justify-content-between" >
                           <div>{{ question.number }}. {{ question.label }} </div>
                           <div>

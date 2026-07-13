@@ -1,6 +1,9 @@
 const { createApp, watch, reactive } = Vue;
 const { createRouter, createWebHistory, useRoute, useRouter } = VueRouter;
 
+// import linkifyHtml from 'linkify-html'
+
+
 const router = createRouter({
   // history: createWebHistory(),
   history: VueRouter.createWebHashHistory(),
@@ -100,6 +103,13 @@ const app = createApp({
       });
     }
 
+    const linkify = function (text) {
+            return linkifyHtml(text, {
+                target: "_blank",
+                rel: "noopener noreferrer"
+            });
+        }
+
 
     const currentQuestion = Vue.computed(() => {
       return data.questions?.[data.q2];
@@ -113,6 +123,7 @@ const app = createApp({
       changePage , 
       currentQuestion , 
       currentHints ,
+      linkify,
       data ,
     };
   }

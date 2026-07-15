@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <title>제과 제빵 기능사 실기 시험</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <link rel="shortcut icon" href="http://www.mins01.com/favicon.ico"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="/js/ForGoogle.js"></script>
+  <!-- google analytics -->
+  <script> 
+    if (window.ForGoogle) { ForGoogle.analytics() } else { console.log("failure : ForGoogle.analytics()"); } 
+  </script>
+
+  <!-- 부트스트랩 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+  <!-- 부트스트랩 5.3.x -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
+
+  <!-- linkify -->
+  <script src="https://unpkg.com/linkifyjs/dist/linkify.min.js"></script>
+  <script src="https://unpkg.com/linkify-html/dist/linkify-html.min.js"></script>
+
+  <!-- vue.js -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <!-- 개발용 (Development) -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+  <script src="https://unpkg.com/vue@3.5.39/dist/vue.global.js"></script>
+  
+  <!-- 배포용 (Production) -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
+
+  <!-- 뷰 라우트 -->
+  <!-- <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script> -->
+  <script src="https://unpkg.com/vue-router@4.6.4/dist/vue-router.global.prod.js"></script>
+
+  
+
+
+  <!-- 페이지 데이터 -->
+  <script src="checklist-supplies-data.js"></script>
+
+  <!-- meta og -->
+
+  <meta property="og:title" content="제과 제빵 기능사 실기 시험">
+  <meta property="og:description" content="제과 제빵 기능사 실기 시험">
+  <!-- <meta property="og:image" content="http://www.mins01.com/img/logo.gif"> -->
+  <!-- <meta property="og:image:width" content="190">
+  <meta property="og:image:height" content="70" /> -->
+  <meta property="og:site_name" content="제과 제빵 실기 시험" />
+  <meta property="og:type" content="website">
+
+  <!-- //meta og -->
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="app" class="my-3">
+      <h1>제과 제빵 기능사 실기 시험 : 체크리스트 - 준비물 </h1>
+      <div class="card my-3">
+        <div class="card-body">
+          <a class="btn btn-link" href="./index.html">index</a>
+          <a class="btn btn-link" href="./checklist-supplies.html">체크리스트-준비물</a>
+        </div>
+      </div>
+      <div class="card my-3">
+        <div class="card-header">체크리스트 - 준비물</div>
+        <div class="card-body">
+          <div class="form-text text-end">{{ data.suppliesData.length }} 준비물</div>
+          <div class="form-text text-end">* 현재 제빵 실기 기준</div>
+          
+          <form action="" onsubmit="return false" id="form_supplies" >
+            <table class="table table-sm table-bordered table-hover">
+              <thead>
+                <tr class="text-center table-success">
+                  <th width="60">
+                    체크
+                    <button class="btn btn-sm btn-primary p-1 lh-1" @click="data.selectedSupplies=[]"><i class="bi bi-trash"></i></button>
+
+                  </th>
+                  <th width="100">준비물</th>
+                  <th width="200">비고</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(supply, idx) in data.suppliesData">
+                  <td class="text-center p-0">
+                    <label class="d-block p-1" role="button" :for="'supply_labels_'+idx">
+                      <input 
+                        :id="'supply_labels_'+idx" 
+                        type="checkbox" 
+                        name="supply_labels[]" 
+                        class="supply_labels" 
+                        :value="supply[0]"
+                        v-model="data.selectedSupplies"
+                      >
+                    </label>
+                    </td>
+                  <td class="text-center  p-0"><label class="d-block  p-1" role="button" :for="'supply_labels_'+idx">{{ supply[0] }}</label></td>
+                  <td><div v-html="linkify(supply[1])"></div></td>
+                </tr>
+              </tbody>
+    
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="checklist-supplies-app.js">
+    
+  </script>
+  <script>
+    window.addEventListener('hide.bs.modal', () => {
+      document.activeElement?.blur();
+    });
+  </script>
+
+</body>
+</html>
+
+

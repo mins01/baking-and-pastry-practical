@@ -25,7 +25,7 @@ const app = createApp({
 
     const data = reactive(
       {
-        ...pageData,
+        ...indexData,
         q1: '',
         q2: '',
       }

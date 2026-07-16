@@ -25,7 +25,10 @@ const app = createApp({
 
     const data = reactive(
       {
-        ...indexData,
+        // ...indexData,
+        categories,
+        questions,
+        hints,
         q1: '',
         q2: '',
       }

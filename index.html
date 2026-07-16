@@ -13,8 +13,8 @@
 
   <script src="/js/ForGoogle.js"></script>
   <!-- google analytics -->
-  <script> 
-    if (window.ForGoogle) { ForGoogle.analytics() } else { console.log("failure : ForGoogle.analytics()"); } 
+  <script>
+    if (window.ForGoogle) { ForGoogle.analytics() } else { console.log("failure : ForGoogle.analytics()"); }
   </script>
 
   <!-- 부트스트랩 아이콘 -->
@@ -37,7 +37,7 @@
   <!-- 개발용 (Development) -->
   <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
   <script src="https://unpkg.com/vue@3.5.39/dist/vue.global.js"></script>
-  
+
   <!-- 배포용 (Production) -->
   <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
 
@@ -45,15 +45,15 @@
   <!-- <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script> -->
   <script src="https://unpkg.com/vue-router@4.6.4/dist/vue-router.global.prod.js"></script>
 
-  
+
 
 
   <!-- 페이지 데이터 -->
-  
+
   <script src="index-questions-data.js"></script>
   <script src="index-solutions-data.js"></script>
   <script src="index-categories-data.js"></script>
-  
+
 
   <!-- meta og -->
 
@@ -135,14 +135,14 @@
                 <thead>
                   <tr class="text-center table-success">
                     <th>비율(%)</th>
-                    <th>재료명</th> 
+                    <th>재료명</th>
                     <th>무게(g)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="BPItem in currentQuestion.BP_dough">
                     <td class="text-end">{{BPItem[0]}}</td>
-                    <td class="text-center">{{BPItem[1]}}</td> 
+                    <td class="text-center">{{BPItem[1]}}</td>
                     <td class="text-end">{{BPItem[2]}}</td>
                   </tr>
                 </tbody>
@@ -161,20 +161,34 @@
                 <tbody>
                   <tr v-for="BPItem in currentQuestion.BP_topping">
                     <td class="text-end">{{BPItem[0]}}</td>
-                    <td class="text-center">{{BPItem[1]}}</td> 
+                    <td class="text-center">{{BPItem[1]}}</td>
                     <td class="text-end">{{BPItem[2]}}</td>
                   </tr>
                 </tbody>
-                
+
               </table>
             </div>
           </div>
-          
+
           <div>
             <hr>
             <h4>풀이</h4>
-            <div>
-              <h5>힌트</h5>
+            <div  class="my-2">
+              <h5>영상</h5>
+              <div style="margin-inline-start: -16px; margin-inline-end: -16px;">
+                <div v-if="!(currentSolution?.video)">
+                  <div class="text-info text-center">
+                    강의 비디오가 없습니다.
+                  </div>
+                </div>
+                <div class="mx-auto" style="max-width: 800px;aspect-ratio: 16/9;"  v-else>
+                  <iframe class="mx-auto d-block" style="width:100%;height: 100%;" width="560" height="315" :src="convertYoutubeToEmbed(currentSolution.video)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+              </div>
+            </div>
+            <div  class="my-2">
+              <h5>힌트 <small>(실습 강의 기준이라서 영상과 차이가 있을 수 있음)</small></h5>
               <ul >
                 <li v-for="(hint, key) in currentSolution?.hints" :key="key">
                   <!-- <a v-if="typeof hint === 'string' && hint.startsWith('http')" :href="hint" target="_blank">{{hint}}</a>
@@ -190,7 +204,7 @@
       </div>
 
 
-      
+
       <!-- Modal Body -->
       <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
       <div
@@ -199,7 +213,7 @@
         tabindex="-1"
         x-data-bs-backdrop="static"
         data-bs-keyboard="false"
-        
+
         role="dialog"
         aria-labelledby="modalTitleId"
         aria-hidden="true"
@@ -221,7 +235,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              
+
               <div>
                 <div v-for="(category,categoryKey ) in data.categories" :key="categoryKey" class="my-3">
                   <h4>{{category.label}}</h4>
@@ -232,7 +246,8 @@
                           <div>{{ question.number }}. {{ question.label }} </div>
                           <div>
                             <i class="ms-1 bi bi-list-check" v-if="data.questions?.[question.key].BP_dough" title="재료목록"></i>
-                            <i class="ms-1 bi bi-question-octagon-fill" v-if="data.hints?.[question.key]" title="힌트"></i>                          
+                            <i class="ms-1 bi bi-play-btn" v-if="data.solutions?.[question.key]?.video" title="비디오"></i>
+                            <i class="ms-1 bi bi-question-octagon-fill" v-if="data.solutions?.[question.key]?.hints" title="힌트"></i>
                           </div>
                         </div>
                       </button>
@@ -254,7 +269,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Optional: Place to the bottom of scripts -->
       <!-- <script>
         const myModal = new bootstrap.Modal(
@@ -268,7 +283,7 @@
 
 
   <script src="index-app.js">
-    
+
   </script>
   <script>
     window.addEventListener('hide.bs.modal', () => {

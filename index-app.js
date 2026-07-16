@@ -74,28 +74,7 @@ const app = createApp({
       },
       { immediate: true }
     );
-    // watch(
-    //   () => route.query.q1,
-    //   (value) => {
-    //     const newValue = value ?? '';
 
-    //     if (data.q1 !== newValue) {
-    //       data.q1 = newValue;
-    //     }
-    //   },
-    //   { immediate: true }
-    // );
-    // watch(
-    //   () => route.query.q2,
-    //   (value) => {
-    //     const newValue = value ?? '';
-
-    //     if (data.q2 !== newValue) {
-    //       data.q2 = newValue;
-    //     }
-    //   },
-    //   { immediate: true }
-    // );
 
     function changePage(page) {
       router.push({
@@ -127,6 +106,17 @@ const app = createApp({
       return null;
     });
     
+    const convertYoutubeToEmbed = (url)=>{
+      if (!url) return null;
+      let v = null;
+      try {
+        v = new URL(url).searchParams.get('v');
+        return `https://www.youtube.com/embed/${v}`;
+      } catch {
+        return null;  
+      }
+      return null;
+    }
     
 
 
@@ -136,6 +126,7 @@ const app = createApp({
       currentSolution,
       currentHints ,
       linkify,
+      convertYoutubeToEmbed,
       data ,
     };
   }

@@ -28,7 +28,6 @@ const app = createApp({
         // ...indexData,
         questions,
         solutions,
-        hints,
         categories,
         q1: '',
         q2: '',

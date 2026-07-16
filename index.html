@@ -51,8 +51,10 @@
   <!-- 페이지 데이터 -->
   
   <script src="index-questions-data.js"></script>
+  <script src="index-solutions-data.js"></script>
   <script src="index-hints-data.js"></script>
   <script src="index-categories-data.js"></script>
+  
 
   <!-- meta og -->
 
@@ -171,15 +173,14 @@
           
           <div>
             <hr>
-            <h4>힌트</h4>
+            <h4>풀이</h4>
             <div>
+              <h5>힌트</h5>
               <ul >
-                <li v-for="(hint, key) in currentHints" :key="key">
+                <li v-for="(hint, key) in currentSolution?.hints" :key="key">
                   <!-- <a v-if="typeof hint === 'string' && hint.startsWith('http')" :href="hint" target="_blank">{{hint}}</a>
                   <span v-else style="white-space: break-spaces">{{hint}}</span> -->
                   <div v-html="linkify(hint)"  style="white-space: break-spaces"></div>
-                  
-
                 </li>
                 <li v-if="!currentHints" class="text-info">아직 힌트가 없습니다.</li>
               </ul>

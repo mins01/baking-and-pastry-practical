@@ -26,9 +26,10 @@ const app = createApp({
     const data = reactive(
       {
         // ...indexData,
-        categories,
         questions,
+        solutions,
         hints,
+        categories,
         q1: '',
         q2: '',
       }
@@ -117,14 +118,23 @@ const app = createApp({
     const currentQuestion = Vue.computed(() => {
       return data.questions?.[data.q2];
     });
-    const currentHints = Vue.computed(() => {
-      return data.hints?.[data.q2];
+    const currentSolution = Vue.computed(() => {
+      return data.solutions?.[data.q2];
     });
+    const currentHints = Vue.computed(() => {
+      // return data.hints?.[data.q2];
+      const solution = data.solutions?.[data.q2];
+      if(solution) return solution.hints;
+      return null;
+    });
+    
+    
 
 
     return {
       changePage , 
       currentQuestion , 
+      currentSolution,
       currentHints ,
       linkify,
       data ,

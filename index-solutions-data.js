@@ -318,7 +318,7 @@ const solutions = {
         +'\n2. 계란을 너무 한번에 넣으면 크림이 불리된다. (계란 6개를 8~9회 나눠서 넣고, 한번 넣을 때마다 충분히 섞이도록 하고, 바닥에 내려 앉은 계란이 섞이도록 자주 정리하자(2번 넣을 때 1번 정리))'
         +'\n3. 짤 때 짤주머니를 유산지 바닥의 1cm에서 힘주어 짠다. (바닥에 빈 공간이 생기면 안된다.)',
     ],
-    video: 'https://www.youtube.com/watch?v=IVQMzW4eN8o',
+    video: 'https://www.youtube.com/watch?v=p3ccdzOTIHM',
   },
 
 }

@@ -199,7 +199,22 @@
                   <dt>{{note.label}}</dt>
                   <dd class="mb-1">
                     <ul class="list-group  ms-1" :class="[note?.type=='numbered'?'list-group-numbered':'']" v-if="note.texts">
-                      <li class="list-group-item" v-for="text in note.texts" v-html="linkify(text)"></li>
+                      <li  class="list-group-item" v-for="text in note.texts"  style="white-space: break-spaces">
+
+                        <template v-if="Array.isArray(text)">
+                          <span v-html="linkify(text[0])" v-if="text?.[0]"></span>
+                          <ul>
+                            <template v-for="(textitem,key) in text" >
+                              <li v-if="key!=0">
+                                <span v-html="linkify(textitem)"  :key="key"></span>
+                              </li>
+                            </template>
+                          </ul>
+                        </template>
+                        <span v-else v-html="linkify(text)"></span>
+                        
+
+                      </li>
                     </ul>
                   </dd>
                 </template>

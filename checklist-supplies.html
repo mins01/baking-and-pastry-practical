@@ -13,7 +13,7 @@
 
   <script src="/js/ForGoogle.js"></script>
   <!-- google analytics -->
-  <script> 
+  <script>
     if (window.ForGoogle) { ForGoogle.analytics() } else { console.log("failure : ForGoogle.analytics()"); } 
   </script>
 
@@ -24,7 +24,9 @@
   <!-- 부트스트랩 5.3.x -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 
 
 
@@ -37,7 +39,7 @@
   <!-- 개발용 (Development) -->
   <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
   <script src="https://unpkg.com/vue@3.5.39/dist/vue.global.js"></script>
-  
+
   <!-- 배포용 (Production) -->
   <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
 
@@ -45,7 +47,7 @@
   <!-- <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script> -->
   <script src="https://unpkg.com/vue-router@4.6.4/dist/vue-router.global.prod.js"></script>
 
-  
+
 
 
   <!-- 페이지 데이터 -->
@@ -77,51 +79,96 @@
         </div>
       </div>
       <div class="card my-3">
-        <div class="card-header">체크리스트 - 준비물</div>
-        <div class="card-body">
-          <div class="form-text text-end">{{ data.suppliesData.length }} 준비물</div>
-          <div class="form-text text-end">* 현재 제빵 실기 기준</div>
-          
-          <form action="" onsubmit="return false" id="form_supplies" >           
-            <ul class="list-group ">
-              <li class="list-group-item list-group-item-secondary" >
-                <div class="d-flex flex-nowrap gap-2 row-gap-1" >
-                  <div style="width:2em" class="justify-content-center text-center flex-shrink-0" >
-                    <b class="fs-5"><button class="btn btn-sm btn-primary p-1 lh-1" @click="data.selectedSupplies=[]"><i class="bi bi-trash"></i></button></b>
-                  </div>
-                  <div class="flex-fill d-flex  flex-wrap flex-lg-row flex-md-column gap-2 row-gap-1" style="min-width: 0;">
-                    <div class="col-12 col-lg-4"><b class="fs-5">준비물</b></div>
-                    <div class="flex-fill d-flex  align-items-end " ><div class="" >비고</div></div>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item list-group-item-action" v-for="(supply, idx) in data.suppliesData" :key="idx">
-                <label class="d-flex flex-nowrap gap-2 row-gap-1" role="button" :for="'supply_labels_'+idx">
-                  <div  style="width:2em" class="justify-content-center text-center flex-shrink-0" >
-                    <b class="fs-5"><input 
-                      :id="'supply_labels_'+idx" 
-                      type="checkbox" 
-                      name="supply_labels[]" 
-                      class="supply_labels form-check-input" 
-                      :value="supply[0]"
-                      v-model="data.selectedSupplies"
-                    ></b>
-                  </div>
-                  <div class="flex-fill d-flex  flex-wrap flex-lg-row flex-md-column gap-2 row-gap-1" style="min-width: 0;">
-                    <div class="col-12 col-lg-4"><b class="fs-5">{{ supply[0] }}</b></div>
-                    <div class="flex-fill d-flex  align-items-end " v-show="supply[1].length"><div class="text-break" v-html="linkify(supply[1])"></div></div>
-                  </div>
-                </label>
-              </li>
-            </ul>
-          </form>
+        <div class="card-header">
+          <div class="d-flex justify-content-between align-items-end flex-wrap">
+            <h4 class="m-0">체크리스트 - 위생복장</h4>
+            <div class="m-0 form-text text-end">{{ data.dressCodeData.length }} 위생복장.</div>
+          </div>
+          <div class="form-text text-danger">필수 복장을 갖추기 못하면 실격 처리됨 </div>
         </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-secondary">
+            <div class="d-flex flex-nowrap gap-2 row-gap-1">
+              <div style="width:2em" class="justify-content-center text-center flex-shrink-0">
+                <b class="fs-5"><button class="btn btn-sm btn-primary p-1 lh-1" @click="data.selectedDressCodes=[]"><i
+                      class="bi bi-trash"></i></button></b>
+              </div>
+              <div class="flex-fill d-flex flex-wrap flex-lg-row flex-md-column  gap-0 row-gap-1" style="min-width: 0;">
+                <div class="col-12 col-lg-4"><b class="fs-5">복장</b></div>
+                <div class="col-12 col-lg-8 flex-fill d-flex  align-items-end ">
+                  <div class="">비고</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action" v-for="(dress, idx) in data.dressCodeData" :key="idx">
+            <label class="d-flex flex-nowrap gap-2 row-gap-1" role="button" :for="'dress_labels_'+idx">
+              <div style="width:2em" class="justify-content-center text-center flex-shrink-0">
+                <b class="fs-5"><input :id="'dress_labels_'+idx" type="checkbox" name="dress_labels[]"
+                    class="dress_labels form-check-input" :value="dress[0]" v-model="data.selectedDressCodes"></b>
+              </div>
+              <div class="flex-fill d-flex flex-wrap flex-lg-row flex-md-column  gap-0 row-gap-1" style="min-width: 0;">
+                <div class="col-12 col-lg-4"><b class="fs-5">{{ dress[0] }}</b></div>
+                <div class="col-12 col-lg-8 d-flex  align-items-end " v-show="dress[1].length">
+                  <div class="text-break" style="white-space: break-spaces;" v-html="linkify(dress[1])"></div>
+                </div>
+              </div>
+            </label>
+          </li>
+        </ul>
+
+      </div>
+      <div class="card my-3">
+        <div class="card-header">
+          <div class="d-flex justify-content-between align-items-end flex-wrap">
+            <h4 class="m-0">체크리스트 - 준비물</h4>
+            <div class="m-0 form-text text-end">{{ data.suppliesData.length }} 준비물.</div>
+          </div>
+          <div class="form-text m-0">
+            * 현재 제빵 실기 기준<br>
+            * 구매링크는 다이소에서 제일 싼 것 기준.
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-secondary">
+            <div class="d-flex flex-nowrap gap-2 row-gap-1">
+              <div style="width:2em" class="justify-content-center text-center flex-shrink-0">
+                <b class="fs-5"><button class="btn btn-sm btn-primary p-1 lh-1" @click="data.selectedSupplies=[]"><i
+                      class="bi bi-trash"></i></button></b>
+              </div>
+              <div class="flex-fill d-flex flex-wrap flex-lg-row flex-md-column  gap-0 row-gap-1" style="min-width: 0;">
+                <div class="col-12 col-lg-4"><b class="fs-5">준비물</b></div>
+                <div class="col-12 col-lg-8 flex-fill d-flex  align-items-end ">
+                  <div class="">비고</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action" v-for="(supply, idx) in data.suppliesData" :key="idx">
+            <label class="d-flex flex-nowrap gap-2 row-gap-1" role="button" :for="'supply_labels_'+idx">
+              <div style="width:2em" class="justify-content-center text-center flex-shrink-0">
+                <b class="fs-5"><input :id="'supply_labels_'+idx" type="checkbox" name="supply_labels[]"
+                    class="supply_labels form-check-input" :value="supply[0]" v-model="data.selectedSupplies"></b>
+              </div>
+              <div class="flex-fill d-flex flex-wrap flex-lg-row flex-md-column  gap-0 row-gap-1" style="min-width: 0;">
+                <div class="col-12 col-lg-4">
+                  <b class="fs-5">{{ supply[0] }}</b>
+                  <a  class="fs-5 ms-2 p-0" v-if="supply?.[2] && supply[2].length" :href="supply[2]" target="_blank"><i class="bi bi-cart"></i></a>
+                </div>
+                <div class="col-12 col-lg-8 flex-fill d-flex  align-items-end " v-show="supply[1].length">
+                  <div class="text-break" style="white-space: break-spaces;" v-html="linkify(supply[1])"></div>
+                </div>
+              </div>
+            </label>
+          </li>
+        </ul>
+
       </div>
     </div>
   </div>
 
   <script src="checklist-supplies-app.js">
-    
+
   </script>
   <script>
     window.addEventListener('hide.bs.modal', () => {
@@ -130,6 +177,5 @@
   </script>
 
 </body>
+
 </html>
-
-

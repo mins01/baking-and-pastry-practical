@@ -5,8 +5,10 @@ const app = createApp({
     
     const data = reactive(
       {
-        suppliesData:suppliesData,
-        selectedSupplies: JSON.parse(localStorage.getItem('selectedSupplies') ?? '[]')
+        dressCodeData,
+        suppliesData,
+        selectedSupplies: JSON.parse(localStorage.getItem('selectedSupplies') ?? '[]'),
+        selectedDressCodes: JSON.parse(localStorage.getItem('selectedDressCodes') ?? '[]'),
       }
     );
 
@@ -14,8 +16,15 @@ const app = createApp({
       () => data.selectedSupplies,
       (value) => {
         localStorage.setItem('selectedSupplies', JSON.stringify(value));
-        console.log(value);
-        
+        // console.log(value);        
+      },
+      { deep: true }
+    );
+    watch(
+      () => data.selectedDressCodes,
+      (value) => {
+        localStorage.setItem('selectedDressCodes', JSON.stringify(value));
+        // console.log(value);
       },
       { deep: true }
     );

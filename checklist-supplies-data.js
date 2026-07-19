@@ -9,8 +9,8 @@ const dressCodeData = [
 
 const suppliesData = [
   // key, note
-  ['주걱','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=104507'],
-  ['내열주걱','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059787'],
+  ['주걱','알뜰주걱. 80도까지','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1045079'],
+  ['내열주걱','200도까지','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059787'],
   ['밀대','중형(약 40cm). 다이소엔 알맞은 제품이 없음','https://www.coupang.com/vp/products/46666673'],
   ['나무뒤집개','베이글','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1033916'],
   ['스크래퍼','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1046054'],
@@ -28,7 +28,7 @@ const suppliesData = [
   ['행주 여러개','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059743'],
   ['헤라','단팥빵용. 다이소엔 알맞은 제품이 없음','https://www.coupang.com/vp/products/28636568'],
   ['895 깍지(바스켓,바구니모양)','밤식빵 토핑용.  다이소엔 없음','https://www.coupang.com/vp/products/7837890710'],
-  ['짤주머니','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1040133'],
+  ['짤주머니','쿠팡제품은 롤형',['https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1040133','https://www.coupang.com/vp/products/8431417661']],
   ['고정집게','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1014019'],
   ['분무기','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=80677'],
   ['비닐팩','모카빵','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=76144'],

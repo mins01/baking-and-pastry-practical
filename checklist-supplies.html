@@ -153,7 +153,11 @@
               <div class="flex-fill d-flex flex-wrap flex-lg-row flex-md-column  gap-0 row-gap-1" style="min-width: 0;">
                 <div class="col-12 col-lg-4">
                   <b class="fs-5">{{ supply[0] }}</b>
-                  <a  class="fs-5 ms-2 p-0" v-if="supply?.[2] && supply[2].length" :href="supply[2]" target="_blank"><i class="bi bi-cart"></i></a>
+                  <template v-if="supply?.[2] && Array.isArray(supply[2])">
+                  <a v-for="link in supply[2]" class="fs-5 ms-2 p-0" :href="link" target="_blank"><i class="bi bi-cart"></i></a>
+
+                  </template>
+                  <a  class="fs-5 ms-2 p-0" v-else-if="supply?.[2] && supply[2].length" :href="supply[2]" target="_blank"><i class="bi bi-cart"></i></a>
                 </div>
                 <div class="col-12 col-lg-8 flex-fill d-flex  align-items-end " v-show="supply[1].length">
                   <div class="text-break" style="white-space: break-spaces;" v-html="linkify(supply[1])"></div>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <title>제과 제빵 기능사 실기 시험</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <link rel="shortcut icon" href="http://www.mins01.com/favicon.ico"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="/js/ForGoogle.js"></script>
+  <!-- google analytics -->
+  <script>
+    if (window.ForGoogle) { ForGoogle.analytics() } else { console.log("failure : ForGoogle.analytics()"); }
+  </script>
+
+  <!-- 부트스트랩 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+  <!-- 부트스트랩 5.3.x -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
+
+  <!-- linkify -->
+  <script src="https://unpkg.com/linkifyjs/dist/linkify.min.js"></script>
+  <script src="https://unpkg.com/linkify-html/dist/linkify-html.min.js"></script>
+
+  <!-- vue.js -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <!-- 개발용 (Development) -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+  <script src="https://unpkg.com/vue@3.5.39/dist/vue.global.js"></script>
+
+  <!-- 배포용 (Production) -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script> -->
+
+  <!-- 뷰 라우트 -->
+  <!-- <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js"></script> -->
+  <script src="https://unpkg.com/vue-router@4.6.4/dist/vue-router.global.prod.js"></script>
+
+
+
+
+  <!-- 페이지 데이터 -->
+
+  <script src="index-questions-data.js"></script>
+  <script src="index-solutions-data.js"></script>
+  <script src="index-categories-data.js"></script>
+
+
+  <!-- meta og -->
+
+  <meta property="og:title" content="제과 제빵 기능사 실기 시험">
+  <meta property="og:description" content="제과 제빵 기능사 실기 시험">
+  <!-- <meta property="og:image" content="http://www.mins01.com/img/logo.gif"> -->
+  <!-- <meta property="og:image:width" content="190">
+  <meta property="og:image:height" content="70" /> -->
+  <meta property="og:site_name" content="제과 제빵 실기 시험" />
+  <meta property="og:type" content="website">
+
+  <!-- //meta og -->
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div id="app" class="my-3">
+      <h1>제과 제빵 기능사 실기 시험 - 요약표</h1>
+      <div class="card my-3">
+        <div class="card-body">
+          <a class="btn btn-link" href="./index.html">실기 시험</a>
+          <a class="btn btn-link" href="./checklist-supplies.html">체크리스트-준비물</a>
+          <a class="btn btn-link" href="./summary.html">요약표</a>
+        </div>
+      </div>
+
+      <h4>제빵</h4>
+
+      <table class="table table-bordered">
+        <thead class="sticky-top">
+          <tr class="table-success text-center">
+            <th class="text-nowrap sticky-top table-info" style="min-width: 200px;" v-for="(v,k) in data.summariesData.baking_head">{{v}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(vh,kh) in data.summariesData.baking_body">
+            <template v-for="(v,idx) in vh">
+              <th v-if="idx==0" class="table-success position-sticky start-0 text-center text-nowrap" style="white-space: break-spaces;" >{{v}}</th>
+              <td v-else class="position-sticky start-0 text-center" style="white-space: break-spaces;" >{{v}}</td>
+
+            </template>
+          </tr>
+        </tbody>
+      </table>
+
+      
+      
+
+    </div>
+  </div>
+
+
+  <script src="summary-app.js">
+
+  </script>
+  <script>
+    window.addEventListener('hide.bs.modal', () => {
+      document.activeElement?.blur();
+    });
+  </script>
+</body>
+
+</html>

@@ -95,8 +95,8 @@ const app = createApp({
             )
           ]
         })
-        
       ],
+      baking:summaries.baking,
       pastry:[],
     }
     console.log(summariesData);

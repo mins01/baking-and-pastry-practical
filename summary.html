@@ -71,41 +71,49 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="app" class="my-3">
-      <h1>제과 제빵 기능사 실기 시험 - 요약표</h1>
-      <div class="card my-3">
-        <div class="card-body">
-          <a class="btn btn-link" href="./index.html">실기 시험</a>
-          <a class="btn btn-link" href="./checklist-supplies.html">체크리스트-준비물</a>
-          <a class="btn btn-link" href="./summary.html">요약표</a>
+  <div  id="app">
+    <div class="container">
+      <div class="my-3">
+        <h1>제과 제빵 기능사 실기 시험 - 요약표</h1>
+        <div class="card my-3">
+          <div class="card-body">
+            <a class="btn btn-link" href="./index.html">실기 시험</a>
+            <a class="btn btn-link" href="./checklist-supplies.html">체크리스트-준비물</a>
+            <a class="btn btn-link" href="./summary.html">요약표</a>
+          </div>
         </div>
       </div>
-
+    </div>
+    <div class="container">
       <h4>제빵</h4>
-
+    </div>
+    <div class="container-fluid" style="max-width: 1200px;">
       <table class="table table-bordered">
         <thead class="sticky-top">
           <tr class="table-success text-center">
-            <th class="text-nowrap sticky-top table-info" style="min-width: 200px;" v-for="(v,k) in data.summariesData.baking_head">{{v}}</th>
+            <th class="text-nowrap border border-1 sticky-top  start-0 table-info" style="min-width: 200px;" v-for="(v,k) in data.summariesData.baking_head">{{v}}</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="(vh,kh) in data.summariesData.baking_body">
             <template v-for="(v,idx) in vh">
-              <th v-if="idx==0" class="table-success position-sticky start-0 text-center text-nowrap" style="white-space: break-spaces;" >{{v}}</th>
-              <td v-else class="position-sticky start-0 text-center" style="white-space: break-spaces;" >{{v}}</td>
-
+              <th v-if="idx==0" class=" border border-1 table-success position-sticky start-0 text-center text-nowrap" style="white-space: break-spaces;" >
+                <a :href="`./index.html#/?q2=${data.summariesData.baking[kh].key}`">{{v}}</a>
+              </th>
+              <td v-else class=" border border-1 text-center" style="white-space: break-spaces;" >{{v}}</td>
+    
             </template>
           </tr>
         </tbody>
       </table>
-
-      
-      
-
-    </div>
+    </div>  
   </div>
+
+
+      
+      
+
+    
 
 
   <script src="summary-app.js">

@@ -108,66 +108,69 @@
       <div class="card my-3" v-if="currentQuestion">
         <div class="card-header">과제명 : {{currentQuestion.number}}. {{currentQuestion.label}}</div>
         <div class="card-body">
-          <div class="mb-3">
-            <b>※시험시간 : {{ currentQuestion.duration??'시험시간 입력 필요' }}</b>
-          </div>
-
-          <div>
-            <h4>요구사항</h4>
-            <div>
-              <ul class="list-unstyled">
-                <li v-for="requirement in currentQuestion.requirements">{{requirement}}</li>
-              </ul>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="mb-3">
+                <b>※시험시간 : {{ currentQuestion.duration??'시험시간 입력 필요' }}</b>
+              </div>
+              <div>
+                <h4>요구사항</h4>
+                <div>
+                  <ul class="list-unstyled">
+                    <li v-for="requirement in currentQuestion.requirements">{{requirement}}</li>
+                  </ul>
+                </div>
+    
+              </div>
             </div>
-
-          </div>
-          <div>
-            <h4>재료</h4>
-            <div>
-              <h5 class="text-center">
-                {{currentQuestion.BP_dough_title??'반죽'}}
-              </h5>
-              <table class="table table-bordered table-sm mx-auto" style="width:auto;">
-                <colgroup>
-                  <col width="150">
-                  <col width="150">
-                  <col width="150">
-                </colgroup>
-                <thead>
-                  <tr class="text-center table-success">
-                    <th>비율(%)</th>
-                    <th>재료명</th>
-                    <th>무게(g)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="BPItem in currentQuestion.BP_dough">
-                    <td class="text-end">{{BPItem[0]}}</td>
-                    <td class="text-center">{{BPItem[1]}}</td>
-                    <td class="text-end">{{BPItem[2]}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div v-if="currentQuestion.BP_topping && currentQuestion.BP_topping.length">
-              <h5 class="text-center">
-                {{currentQuestion.BP_topping_title??'(토핑 (계량시간에서 제외))'}}
-              </h5>
-              <table class="table table-bordered table-sm mx-auto" style="width:auto;">
-                <colgroup>
-                  <col width="150">
-                  <col width="150">
-                  <col width="150">
-                </colgroup>
-                <tbody>
-                  <tr v-for="BPItem in currentQuestion.BP_topping">
-                    <td class="text-end">{{BPItem[0]}}</td>
-                    <td class="text-center">{{BPItem[1]}}</td>
-                    <td class="text-end">{{BPItem[2]}}</td>
-                  </tr>
-                </tbody>
-
-              </table>
+            <div  class="col-12 col-lg-6">
+              <h4>재료</h4>
+              <div>
+                <h5 class="text-center">
+                  {{currentQuestion.BP_dough_title??'반죽'}}
+                </h5>
+                <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+                  <colgroup>
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                  </colgroup>
+                  <thead>
+                    <tr class="text-center table-success">
+                      <th>비율(%)</th>
+                      <th>재료명</th>
+                      <th>무게(g)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="BPItem in currentQuestion.BP_dough">
+                      <td class="text-end">{{BPItem[0]}}</td>
+                      <td class="text-center">{{BPItem[1]}}</td>
+                      <td class="text-end">{{BPItem[2]}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div v-if="currentQuestion.BP_topping && currentQuestion.BP_topping.length">
+                <h5 class="text-center">
+                  {{currentQuestion.BP_topping_title??'(토핑 (계량시간에서 제외))'}}
+                </h5>
+                <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+                  <colgroup>
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                  </colgroup>
+                  <tbody>
+                    <tr v-for="BPItem in currentQuestion.BP_topping">
+                      <td class="text-end">{{BPItem[0]}}</td>
+                      <td class="text-center">{{BPItem[1]}}</td>
+                      <td class="text-end">{{BPItem[2]}}</td>
+                    </tr>
+                  </tbody>
+  
+                </table>
+              </div>
             </div>
           </div>
         </div>

@@ -98,7 +98,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=h1Dyg7htX2A',
+    video: 'https://www.youtube.com/watch?v=8H8_KzAFbI8',
   },
   // 단팥빵 (비상스트레이트법)
   baking_4: {

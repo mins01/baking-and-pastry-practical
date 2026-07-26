@@ -114,6 +114,21 @@
       </div>
 
     </div>
+    <div class="container my-3">
+      <h4>제빵 2차발효 식빵틀 정리</h4>
+      
+      <div class="card">
+        <div class="card-body">
+          <ul>
+            <li v-for="(v,k) in data.summariesData.baking.filter((el)=>{ return el.summary?.특징?.includes('틀 ') })">
+              {{v.question.number}}. {{v.question.label}} : {{v.summary.특징.match(/틀 .*/)?.[0]}}
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+
+    </div>
     <div class="container">
       <h4>제빵</h4>
     </div>

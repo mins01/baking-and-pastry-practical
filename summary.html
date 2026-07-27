@@ -100,17 +100,33 @@
           </ul>
           
           <h5>특이</h5>
-          <ul>
-            <li>소세지빵 220/160 15분</li>
-            <li>베이글 210/190 18분</li>
-            <li>그리시니 200/160 15~20분</li>
-            <li>풀만식빵 190/190 30~35분</li>
-            <li>통밀빵 190/160 20분</li>
-            <li>밤식빵 170/170 30분</li>
-            <li>호밀빵 200/180 15분 -> 180/180 10분</li>
-            <li>쌀식빵 180/180 10분 -> 160/180 20분</li>
-          </ul>
-        </div>
+          <div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">소세지빵</div><div class="flex-fill"><b>220/160 15분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">베이글</div><div class="flex-fill"><b>210/190 18분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">그리시니</div><div class="flex-fill"><b>200/160 15~20분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">풀만식빵</div><div class="flex-fill"><b>190/190 30~35분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">통밀빵</div><div class="flex-fill"><b>190/160 20분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">밤식빵</div><div class="flex-fill"><b>170/170 30분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">호밀빵</div><div class="flex-fill"><b>200/180 15분 -> 180/180 10분</b></div>
+            </div>
+            <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+              <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">쌀식빵</div><div class="flex-fill"><b>180/180 10분 -> 160/180 20분</b></div>
+            </div>
+          </div>
+         </div>
       </div>
 
     </div>
@@ -119,12 +135,13 @@
       
       <div class="card">
         <div class="card-body">
-          <ul>
-            <li v-for="(v,k) in data.summariesData.baking.filter((el)=>{ return el.summary?.특징?.includes('틀 ') })">
-              {{v.question.number}}. {{v.question.label}} : {{v.summary.특징.match(/틀 .*/)?.[0]}}
-            </li>
-            
-          </ul>
+          <div>
+            <template v-for="(v,k) in data.summariesData.baking.filter((el)=>{ return el.summary?.특징?.includes('틀 ') })">
+              <div class="border border-1 rounded p-2 d-flex my-1" style="min-width:260px; max-width:max-content" >
+                <div class="pe-2 me-2 border-end border-1 text-truncate" style="width:8em">{{v.question.number}}. {{v.question.label}}</div><div class="flex-fill"><b>{{v.summary.특징.match(/틀 .*/)?.[0]}}</b></div>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
 

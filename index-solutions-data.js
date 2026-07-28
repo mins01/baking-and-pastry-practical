@@ -388,7 +388,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=0fxNlihcQBQ',
+    video: 'https://www.youtube.com/watch?v=zLVn-RItfMQ',
   },
   // 크림빵
   baking_11: {

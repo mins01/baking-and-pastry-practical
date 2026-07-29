@@ -31,7 +31,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=jR2Kk3REYDo',
+    video: 'https://www.youtube.com/watch?v=rhwExVAEucM',
   },
   // 소세지빵
   baking_2: {
@@ -67,7 +67,7 @@ const solutions = {
         ],
       }
     ],
-    video: 'https://www.youtube.com/watch?v=O2KD76ruAYQ',
+    video: 'https://www.youtube.com/watch?v=BELfEoSjI6Y',
   },
   // 식빵 비상스트레이법
   baking_3: {
@@ -145,7 +145,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=KFxtOAUZ0-Q',
+    video: 'https://www.youtube.com/watch?v=TXV6iVui4_E',
   },
   // 그리시니
   baking_5: {
@@ -179,7 +179,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=gTmI9-Zalaw',
+    video: 'https://www.youtube.com/watch?v=yD1tEn-SC3Y',
   },
   // 밤식빵
   baking_6: {
@@ -215,7 +215,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=MWBcNg1UVkA',
+    video: 'https://www.youtube.com/watch?v=0rHUeW69WaY',
   },
   // 베이글
   baking_7: {
@@ -263,7 +263,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=B39hbA5dEa8',
+    video: 'https://www.youtube.com/watch?v=Dm0X-0-Pgew',
   },
   // 스위트 롤
   baking_8: {
@@ -308,7 +308,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=JXCtgVZnA3c',
+    video: 'https://www.youtube.com/watch?v=dFSmdATAVXE',
   },
   // 우유식빵
   baking_9: {
@@ -339,7 +339,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=dd8CSrW8drk',
+    video: 'https://www.youtube.com/watch?v=21AGWd1HECk',
   },
   // 단과자빵(트위스트형)
   baking_10: {
@@ -448,7 +448,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=yMfm6M-I0dA',
+    video: 'https://www.youtube.com/watch?v=tpuiXVChhhU',
   },
   // 풀만식빵
   baking_12: {
@@ -479,7 +479,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=YmGHBrbvzhA',
+    video: 'hhttps://www.youtube.com/watch?v=YmGHBrbvzhA',
   },
   // 소보로빵
   baking_13: {
@@ -538,7 +538,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=4k1SKMvOpNk',
+    video: 'https://www.youtube.com/watch?v=XbzleyhYV1U',
   },
   // 쌀식빵
   baking_14: {
@@ -657,7 +657,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=k6u3x61O1Pw',
+    video: 'https://www.youtube.com/watch?v=N7gKc6ZuQdY',
   },
   // 옥수수 식빵
   baking_17: {
@@ -687,7 +687,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=vvt3Obaetyc',
+    video: 'https://www.youtube.com/watch?v=s5OZQQ6RZ0U',
   },
   // 모카빵
   baking_18: {
@@ -783,7 +783,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=8Rqwdwy56Hs',
+    video: 'https://www.youtube.com/watch?v=ddHvIZazXN8',
   },
   // 통밀빵
   baking_20: {
@@ -817,7 +817,7 @@ const solutions = {
         ],
       },
     ],
-    video: 'https://www.youtube.com/watch?v=OhMZlbNeSMo',
+    video: 'https://www.youtube.com/watch?v=5A2b8jKB5jw',
   },
 
 
@@ -1267,7 +1267,6 @@ const solutions = {
   // 7. 쇼트브레드 쿠키
   pastry_7: {
     'notes': [
-
       {
         label: '전처리',
         type: 'numbered',
@@ -1600,6 +1599,70 @@ const solutions = {
       
     ],
     video: 'https://www.youtube.com/watch?v=-RVbn2TiaKI',
+  },
+
+  // 15. 시퐁 케이크(시퐁법)
+  pastry_15: {
+    'notes': [
+      {
+        label: '전처리',
+        type: 'numbered',
+        texts: [
+          '계란 계량하고 분리',
+          '오븐 예열 (175/150)',
+          '시폰틀(4개) 준비하고 분무기로 내부에 물 뿌리고 뒤집어 둠',
+          '가루류 2번 채침',
+        ],
+      },
+      {
+        label: '공정 (시퐁법)(믹서사용)',
+        type: 'numbered',
+        texts: [
+          [
+            '[손거품기] 큰 볼에 노란자를 풀어주고, 설탕A+소금을 2번 나눠 넣는다.',
+            '[손거품기] 식용유와 물을 넣고 설탕이 다 녹을 정도로 섞은 후 가루를 넣는다.',
+            '반죽에 거품을 올리지 않는다!',
+          ],
+          [
+            '[믹서] 믹서볼에 흰자를 넣고 휘핑하여 머랭을 만든다.',
+            '설탕B는 3번 나눠 넣는다.(1/2, 나머지 1/2, 나머지)',
+            '새부리가 될 정도로 휘핑한다.',
+          ],
+          [
+            '[거품기] 노란자반죽에 머랭 1/2을 가볍게 섞는다. (너무 많이 젓지 않는다. 거품 꺼짐 주의)',
+            '[주석] 노란자반죽에 나머지 머랭을 섞는다. (노란자 반죽 색이 안 보이도록, 바닥까지 잘 섞이게)',
+          ],
+          '비중체크 0.4~0.5 / 온도체크 23도',
+          [
+            '[패닝] 약 420g 정도로 반죽을 채운다.',
+            '시퐁 팬에 다시 한번 물을 뿌린후 사용한다.(물기가 마른다).',
+            '반죽을 다 균일하게 채운 후 젓가락으로 휘저으면서 거친 기포를 빼내고 높이를 정리한다.',
+            '바닥 충격을 줄 때 중간 부분와 틀외각을 꽉 잡고 해야한다. (바작에 반죽이 나올 수 있음)',
+          ],
+          [
+            '오븐 175/150에 25분 정도 굽는다.',
+            '중앙에도 색이 조금 나오면 꺼낸다.'
+          ],
+          [
+            '꺼낸 후 거꾸로해서 타공팬에 놓고, 젓은 행주 등으로 덮어서 식힌다.(여러번 바꿔야할 수 있다)',
+            '시험 시간이 짧기 때문에 빨리 식히기 위한 행동',
+          ],
+          '다 식은 후 틀에서 분리해서 뒤집어서 제출.',
+        ],
+      },
+      {
+        label: '힌트',
+        texts: [
+          '식히는 시간이 오래 걸린다.',
+          '충분히 식히지 않으면 분리가 안된다.',
+          '머랭을 넣고 너무 섞으면 비중이 높게 나온다.',
+          '틀을 설거지까지 해야한다.',
+          '구울 때 시퐁 틀을 바로 오븐에 넣는다. 오븐팬을 사용 안함'
+        ],
+      },
+      
+    ],
+    video: 'https://www.youtube.com/watch?v=Ad5LwgpMKsE',
   },
 
   // 16. 마데라(컵) 케이크

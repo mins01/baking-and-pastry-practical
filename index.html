@@ -74,6 +74,9 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
     }
+    tr[data-bpitem-label="계"]{
+      font-weight: bold;
+    }
   </style>
 
 
@@ -152,7 +155,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="BPItem in currentQuestion.BP_dough">
+                    <tr v-for="(BPItem,key) in currentQuestion.BP_dough" :key="key" :data-bpitem-label="BPItem[1]">
                       <td class="text-end">{{BPItem[0]}}</td>
                       <td class="text-center">{{BPItem[1]}}</td>
                       <td class="text-end">{{BPItem[2]}}</td>
@@ -171,7 +174,47 @@
                     <col width="150">
                   </colgroup>
                   <tbody>
-                    <tr v-for="BPItem in currentQuestion.BP_topping">
+                    <tr v-for="(BPItem,key) in currentQuestion.BP_topping" :key="key" :data-bpitem-label="BPItem[1]">
+                      <td class="text-end">{{BPItem[0]}}</td>
+                      <td class="text-center">{{BPItem[1]}}</td>
+                      <td class="text-end">{{BPItem[2]}}</td>
+                    </tr>
+                  </tbody>
+  
+                </table>
+              </div>
+              <div v-if="currentQuestion.BP_topping2 && currentQuestion.BP_topping2.length">
+                <h5 class="text-center" v-if="currentQuestion.BP_topping2_title">
+                  {{currentQuestion.BP_topping2_title??'(추가 토핑)'}}
+                </h5>
+                <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+                  <colgroup>
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                  </colgroup>
+                  <tbody>
+                    <tr v-for="(BPItem,key) in currentQuestion.BP_topping2" :key="key" :data-bpitem-label="BPItem[1]">
+                      <td class="text-end">{{BPItem[0]}}</td>
+                      <td class="text-center">{{BPItem[1]}}</td>
+                      <td class="text-end">{{BPItem[2]}}</td>
+                    </tr>
+                  </tbody>
+  
+                </table>
+              </div>
+              <div v-if="currentQuestion.BP_topping3 && currentQuestion.BP_topping3.length">
+                <h5 class="text-center" v-if="currentQuestion.BP_topping3_title">
+                  {{currentQuestion.BP_topping3_title??''}}
+                </h5>
+                <table class="table table-bordered table-sm mx-auto" style="width:auto;">
+                  <colgroup>
+                    <col width="150">
+                    <col width="150">
+                    <col width="150">
+                  </colgroup>
+                  <tbody>
+                    <tr v-for="(BPItem,key) in currentQuestion.BP_topping3" :key="key" :data-bpitem-label="BPItem[1]">
                       <td class="text-end">{{BPItem[0]}}</td>
                       <td class="text-center">{{BPItem[1]}}</td>
                       <td class="text-end">{{BPItem[2]}}</td>

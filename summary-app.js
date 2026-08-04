@@ -52,11 +52,12 @@ const app = createApp({
         {
           key:el.key,
           question:questions[el.key],
-          summary:solutions[el.key],
+          summary:solutions[el.key].summary,
         }
       );
       Object.keys(solutions[el.key].summary).forEach(label => summaries.pastry_labels.add(label))
     })
+    
     summaries.baking_labels = [...summaries.baking_labels]
     summaries.pastry_labels = [...summaries.pastry_labels]
     console.log(summaries);
@@ -74,6 +75,8 @@ const app = createApp({
       pastry_heads:summaries.pastry.map((el)=>{ return `${el.question.number}. ${el.question.label}`;}),
       pastry_labels:summaries.pastry_labels,
       pastry_values:summaries.pastry_labels.map((label)=>{
+        console.log(label,summaries.pastry);
+        
         return summaries.pastry.map(
           (el)=>{ 
             return (el.summary[label])??'';
@@ -97,7 +100,22 @@ const app = createApp({
         })
       ],
       baking:summaries.baking,
-      pastry:[],
+
+
+      pastry_head:['시험',...tempData.pastry_labels],
+      pastry_body:[
+        ... tempData.pastry_heads.map((el1,idx1)=>{
+          return [
+            el1,
+            ...tempData.pastry_labels.map(
+              (el2,idx2)=>{
+                return tempData.pastry_values[idx2][idx1]??'';
+              }
+            )
+          ]
+        })
+      ],
+      pastry:summaries.pastry,
     }
     console.log(summariesData);
 

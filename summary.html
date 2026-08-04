@@ -74,12 +74,13 @@
   <div  id="app">
     <div class="container">
       <div class="my-3">
-        <h1>제과 제빵 기능사 실기 시험 - 요약표</h1>
+        <h1>제과 제빵 기능사 실기 시험 - 제빵 요약표</h1>
         <div class="card my-3">
           <div class="card-body">
             <a class="btn btn-link" href="./index.html">실기 시험</a>
             <a class="btn btn-link" href="./checklist-supplies.html">체크리스트-준비물</a>
-            <a class="btn btn-link" href="./summary.html">요약표</a>
+            <a class="btn btn-link" href="./summary.html">제빵 요약표</a>
+            <a class="btn btn-link" href="./summary-pastry.html">제과 요약표</a>
           </div>
         </div>
       </div>
@@ -173,8 +174,8 @@
     <div class="container">
       <h4>제빵</h4>
     </div>
-    <div class="container-fluid" style="max-width: 1200px;">
-      <table class="table table-bordered">
+    <div class="container-fluid" >
+      <table class="table table-bordered mx-auto" style="width: auto;">
         <thead class="sticky-top">
           <tr class="table-success text-center">
             <th class="text-nowrap border border-1 sticky-top  start-0 table-info" style="min-width: 200px;" v-for="(v,k) in data.summariesData.baking_head">{{v}}</th>

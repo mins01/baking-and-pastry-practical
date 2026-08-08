@@ -24,7 +24,9 @@
   <!-- 부트스트랩 5.3.x -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
 
 
 
@@ -67,11 +69,17 @@
 
   <!-- //meta og -->
 
+  <style>
+    .process-summary-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+  </style>
 
 </head>
 
 <body>
-  <div  id="app">
+  <div id="app">
     <div class="container">
       <div class="my-3">
         <h1>제과 제빵 기능사 실기 시험 - 제과 요약표</h1>
@@ -123,7 +131,8 @@
             </li>
             <li>
               [믹서기] 흰자 + 설탕을 3회 나눠서 머랭을 올린다. (보통 약 90% 머랭이 목표)
-              <div class="form-text">* 설탕 B는 ① 거친 거품(약 1분)에 1/2,  ② 흰 거품(약 1~2분)에 나머지 1/2, ③ 약간 단단해지면 볼 아래 설탕을 정리하고 나머지를 넣고 최종으로 돌린다.</div>
+              <div class="form-text">* 설탕 B는 ① 거친 거품(약 1분)에 1/2, ② 흰 거품(약 1~2분)에 나머지 1/2, ③ 약간 단단해지면 볼 아래 설탕을 정리하고 나머지를
+                넣고 최종으로 돌린다.</div>
               <div class="form-text">* 믹서기 바닥을 정리해서 설탕이 다 녹도록 한다.</div>
               <div class="form-text">* 새부리로 휘어지는 정도가 90%, 안 휘어지면 100%가 넘은 것으로 가루 혼합이 어렵다.</div>
               <div class="form-text">* 다쿠아즈는 100% 머랭으로 한다.</div>
@@ -176,40 +185,67 @@
           </ol>
         </li>
       </ul>
+
+      <ul></ul>
+    </div>
+    <div class="container my-3">
+      <h4>제과 공정 요약표</h4>
+      <ul class="list-group ">
+        <template v-for="(vh,kh) in data.summariesData.pastry_body">
+          <li class="list-group-item" v-if="data.summariesData.pastry[kh].summary?.공정요약" >
+            <h6><a  :href="`./index.html#/?q2=${data.summariesData.pastry[kh].key}`">{{data.summariesData.pastry[kh].question.number}}. {{data.summariesData.pastry[kh].question.label}}</a></h6>
+            <div class="process-summary-grid flex-wrap gap-1">
+              <div v-for="(vh1,idxh1) in data.summariesData.pastry[kh].summary?.공정요약"  class="border border-1 rounded p-1 px-2 d-flex flex-nowrap gap-1" >
+                <div style="min-width:1.5em; flex:0 0 auto;">{{idxh1+1}}.</div>
+                <div class="flex-fill">{{vh1}}</div>
+                
+              </div>
+            </div>
+          </li>
+        </template>
+      </ul>
       
-      <ul ></ul>
+      <div >
+        
+        <div>
+
+        </div>
+      </div>
     </div>
     <div class="container">
       <h4>제과 요약표</h4>
     </div>
-    <div class="container-fluid" >
+    <div class="container-fluid">
       <table class="table table-bordered mx-auto" style="width: auto;">
         <thead class="sticky-top">
           <tr class="table-success text-center">
-            <th class="text-nowrap border border-1 sticky-top  start-0 table-info" style="min-width: 200px;" v-for="(v,k) in data.summariesData.pastry_head">{{v}}</th>
+            <th class="text-nowrap border border-1 sticky-top  start-0 table-info" style="min-width: 200px;"
+              v-for="(v,k) in data.summariesData.pastry_head">{{v}}</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(vh,kh) in data.summariesData.pastry_body">
-            <template v-for="(v,idx) in vh">
-              <th v-if="idx==0" class=" border border-1 table-success position-sticky start-0 text-center text-nowrap" style="white-space: break-spaces;" >
-                <a :href="`./index.html#/?q2=${data.summariesData.pastry[kh].key}`">{{v}}</a>
-              </th>
-              <td v-else class=" border border-1 text-center" style="white-space: break-spaces;" >{{v}}</td>
-    
-            </template>
-          </tr>
+          <template v-for="(vh,kh) in data.summariesData.pastry_body">
+            <tr>
+              <template v-for="(v,idx) in vh">
+                <th v-if="idx==0" class=" border border-1 table-success position-sticky start-0 text-center text-nowrap"
+                  style="white-space: break-spaces;" >
+                  <a :href="`./index.html#/?q2=${data.summariesData.pastry[kh].key}`">{{v}}</a>
+                </th>
+                <td v-else class=" border border-1 text-center" style="white-space: break-spaces;">{{v}}</td>
+              </template>
+            </tr>
+          </template>
         </tbody>
       </table>
-    </div>  
+    </div>
 
   </div>
 
 
-      
-      
 
-    
+
+
+
 
 
   <script src="summary-app.js">

@@ -59,7 +59,7 @@ const app = createApp({
     })
     
     summaries.baking_labels = [...summaries.baking_labels]
-    summaries.pastry_labels = [...summaries.pastry_labels]
+    summaries.pastry_labels = [... ([...summaries.pastry_labels].filter(k=>k!='공정요약'))] // 공정요약만 예외 처리
     console.log(summaries);
     
     const tempData = {

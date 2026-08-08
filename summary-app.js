@@ -116,10 +116,9 @@ const app = createApp({
         })
       ],
       pastry:summaries.pastry,
+      pastry_sort_by_ovens:[...summaries.pastry].sort((a,b)=>{ return a.summary.오븐 < b.summary.오븐?-1:1; }),
     }
     console.log(summariesData);
-
-
 
     const data = reactive(
       {

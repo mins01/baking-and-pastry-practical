@@ -93,7 +93,20 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container my-3">
+      <h4>제과 오븐온도 요약표</h4>
+      <div>
+        <template v-for="(v,k) in data.summariesData.pastry_sort_by_ovens">
+          <div class="border border-1 rounded p-2 d-flex my-1" style="min-width: 300px; max-width: max-content;">
+            <div class="pe-2 me-2 border-end border-1 text-truncate" style="width: 14em;">
+              <a  :href="`./index.html#/?q2=${v.key}`">{{v.question.number}}. {{v.question.label}}</a>
+            </div>
+            <div class="flex-fill"><b>{{v.summary.오븐}}</b></div>
+          </div>
+        </template>
+      </div>
+    </div>
+    <div class="container my-3">
       <h4>제과 반죽법</h4>
       <ul class="list-group">
         <li class="list-group-item">

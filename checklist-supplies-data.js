@@ -28,14 +28,17 @@ const suppliesData = [
   ['행주 여러개','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059743'],
   ['헤라','단팥빵용. 다이소엔 알맞은 제품이 없음','https://www.coupang.com/vp/products/28636568'],
   ['895 깍지(바스켓,바구니모양)','제빵 밤식빵 토핑용.  다이소엔 없음','https://www.coupang.com/vp/products/7837890710'],
-  ['171k 깍지(6발별)','제과 버터쿠키 .  다이소엔 없음','https://www.coupang.com/vp/products/5767731864'],
-  ['232 깍지(생크림깍지)','제과 슈.  다이소엔 없음','https://www.coupang.com/vp/products/7155990017'],
   ['짤주머니','쿠팡제품은 롤형',['https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1040133','https://www.coupang.com/vp/products/8431417661']],
   ['고정집게','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1014019'],
   ['분무기','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=80677'],
   ['비닐팩','모카빵','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=76144'],
   ['쟁반','없으면 식힘판을 사용','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1060754'],
   ['작은트레이','옵션. 조리 용품 등을 놓기','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059170'],
-  ['수세미','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1041176'],
-  ['세제','','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059853'],
+  
+  ['171k 깍지(6발별)','제과 버터쿠키 .  다이소엔 없음','https://www.coupang.com/vp/products/5767731864'],
+  ['232 깍지(생크림깍지)','제과 슈.  다이소엔 없음','https://www.coupang.com/vp/products/7155990017'],
+  ['광목천','제과 롤케이크용 (70*70)/남부시험장에 없다고함','https://www.bncmarket.com/shop/shopdetail.html?branduid=28524'],
+  
+  ['수세미','남부시험장엔 있음','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1041176'],
+  ['세제','남부시험장엔 있음','https://www.daisomall.co.kr/pd/pdr/SCR_PDR_0001?pdNo=1059853'],
 ]

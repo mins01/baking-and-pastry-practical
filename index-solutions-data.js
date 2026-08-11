@@ -1118,7 +1118,7 @@ const solutions = {
       },
 
     ],
-    video: 'https://www.youtube.com/watch?v=8QtCpRf-Ya8',
+    video: 'https://www.youtube.com/watch?v=5mOVza2NzpA',
   },
   // 4. 소프트롤 케이크
   pastry_4: {

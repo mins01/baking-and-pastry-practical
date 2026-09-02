@@ -72,7 +72,7 @@
   <style>
     .grid-4{
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
     tr[data-bpitem-label="계"]{
       font-weight: bold;
@@ -88,7 +88,7 @@
       <h1>제과 제빵 기능사 실기 시험</h1>
       <div class="card my-3">
           <div class="card-body">
-            <a class="btn btn-link" href="./index.html">실기 시험</a>
+            <a class="btn btn-link" href="./index.html">문제와 풀이</a>
             <a class="btn btn-link" href="./checklist-supplies.html">체크리스트-준비물</a>
             <a class="btn btn-link" href="./summary.html">제빵 요약표</a>
             <a class="btn btn-link" href="./summary-pastry.html">제과 요약표</a>
@@ -119,7 +119,20 @@
       </div>
 
       <div class="card my-3" v-if="currentQuestion">
-        <div class="card-header">과제명 : {{currentQuestion.number}}. {{currentQuestion.label}}</div>
+        <div class="card-header">
+          <div class="d-flex align-items-center gap-2">
+            <div>
+              <label role="button" class="btn btn-outline-success btn-sm" :class="{active: !data.closedQs.includes(currentKey)}">
+                <input type="checkbox" name="closedQs[]" class="closedQs form-check-input" :value="currentKey" v-model="data.closedQs" hidden>
+                <i class="bi bi-eye-slash-fill" v-if="data.closedQs.includes(currentKey)"></i>
+                <i class="bi bi-eye" v-else></i>
+              </label>
+            </div>
+            <div>
+              과제명 : {{currentQuestion.number}}. {{currentQuestion.label}}
+            </div>
+          </div>
+        </div>
         <div class="card-body">
           <div class="row">
             <div class="col-12 col-lg-6">
@@ -133,7 +146,7 @@
                     <li v-for="requirement in currentQuestion.requirements" style="white-space: break-spaces;">{{requirement}}</li>
                   </ul>
                 </div>
-    
+
               </div>
             </div>
             <div  class="col-12 col-lg-6">
@@ -181,7 +194,7 @@
                       <td class="text-end">{{BPItem[2]}}</td>
                     </tr>
                   </tbody>
-  
+
                 </table>
               </div>
               <div v-if="currentQuestion.BP_topping2 && currentQuestion.BP_topping2.length">
@@ -201,7 +214,7 @@
                       <td class="text-end">{{BPItem[2]}}</td>
                     </tr>
                   </tbody>
-  
+
                 </table>
               </div>
               <div v-if="currentQuestion.BP_topping3 && currentQuestion.BP_topping3.length">
@@ -221,7 +234,7 @@
                       <td class="text-end">{{BPItem[2]}}</td>
                     </tr>
                   </tbody>
-  
+
                 </table>
               </div>
             </div>
@@ -233,7 +246,7 @@
         <div class="card-header">풀이 : {{currentQuestion.number}}. {{currentQuestion.label}}</div>
         <div class="card-body">
           <div  class="my-2" v-if="currentSolution?.summary">
-            <h5><i class="bi bi-info-circle"></i> 요약</h5>           
+            <h5><i class="bi bi-info-circle"></i> 요약</h5>
             <div class="grid-4 gap-2">
               <template v-for="(v,k) in currentSolution.summary">
                 <div  v-if="v.length && k!='공정요약'" >
@@ -262,7 +275,7 @@
             <hr>
           </div>
           <div  class="my-2" v-if="currentSolution?.notes">
-            
+
             <h5><i class="bi bi-journal-text"></i> 노트 <small>(실습 강의 기준이라서 영상과 차이가 있을 수 있음)</small></h5>
             <div >
               <dl class="my-3" v-for="(note, key) in currentSolution?.notes" :key="key">
@@ -285,7 +298,7 @@
                           </ul>
                         </template>
                         <span v-else v-html="linkify(text)"></span>
-                        
+
 
                       </li>
                     </ul>
@@ -317,7 +330,7 @@
 
         </div>
       </div>
-      
+
 
 
 
@@ -351,26 +364,48 @@
               ></button>
             </div>
             <div class="modal-body">
+              <form action="" onsubmit="return false;">
+                <div class="d-flex ">
+                  <div class="input-group justify-content-end">
+                    <button type="button" class="btn btn-outline-success btn-md" @click="data.closedQs=[]">
+                      <i class="bi bi-eye"></i> OPEN ALL 
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-md" @click="data.closedQs=Object.keys(data.questions)">
+                      <i class="bi bi-eye-slash"></i> CLOSE ALL 
+                    </button>
 
-              <div>
+                  </div>
+
+                </div>
                 <div v-for="(category,categoryKey ) in data.categories" :key="categoryKey" class="my-3">
-                  <h4>{{category.label}}</h4>
+                  <h4 class="d-flex justify-content-between">
+                    <div>{{category.label}}</div>
+
+                  </h4>
                   <div class="d-flex flex-wrap">
                     <div v-for="question in category.questions" class="col-12 col-lg-6 p-1" >
-                      <button type="button"  data-bs-dismiss="modal" class="w-100 btn btn-outline-primary btn-md" :class="{ active: data.q2 === question.key }" @click="data.q2=question.key;">
-                        <div class="d-flex justify-content-between" >
-                          <div>{{ question.number }}. {{ question.label }} </div>
-                          <div>
-                            <i class="ms-1 bi bi-list-check" v-if="data.questions?.[question.key].BP_dough" title="재료목록"></i>
-                            <i class="ms-1 bi bi-play-btn" v-if="data.solutions?.[question.key]?.video" title="비디오"></i>
-                            <i class="ms-1 bi  bi-journal-text" v-if="data.solutions?.[question.key]?.notes" title="노트"></i>
+
+                      <div class="w-100 input-group">
+                        <label role="button" class="btn btn-outline-success" :class="{active: !data.closedQs.includes(question.key)}">
+                          <input :id="'closedQ-'+question.key" type="checkbox" name="closedQs[]" class="closedQs form-check-input" :value="question.key" v-model="data.closedQs" hidden>
+                          <i class="bi bi-eye-slash-fill" v-if="data.closedQs.includes(question.key)"></i>
+                          <i class="bi bi-eye" v-else></i>
+                        </label>
+                        <button type="button"  data-bs-dismiss="modal" class="flex-fill btn btn-outline-primary btn-md" :class="{ active: data.q2 === question.key }" @click="data.q2=question.key;">
+                          <div class="d-flex justify-content-between" >
+                            <div>{{ question.number }}. {{ question.label }}</div>
+                            <div>
+                              <i class="ms-1 bi bi-list-check" v-if="data.questions?.[question.key].BP_dough" title="재료목록"></i>
+                              <i class="ms-1 bi bi-play-btn" v-if="data.solutions?.[question.key]?.video" title="비디오"></i>
+                              <i class="ms-1 bi  bi-journal-text" v-if="data.solutions?.[question.key]?.notes" title="노트"></i>
+                            </div>
                           </div>
-                        </div>
-                      </button>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
 
             </div>
             <div class="modal-footer">

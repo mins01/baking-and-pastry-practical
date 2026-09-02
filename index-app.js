@@ -31,6 +31,7 @@ const app = createApp({
         categories,
         q1: '',
         q2: '',
+        closedQs: JSON.parse(localStorage.getItem('closedQs') ?? '[]'),
       }
     );
 
@@ -75,6 +76,15 @@ const app = createApp({
       { immediate: true }
     );
 
+    watch(
+      () => data.closedQs,
+      (value) => {
+        localStorage.setItem('closedQs', JSON.stringify(value));
+        // console.log(value);        
+      },
+      { deep: true }
+    );
+
 
     function changePage(page) {
       router.push({
@@ -95,6 +105,9 @@ const app = createApp({
 
     const currentQuestion = Vue.computed(() => {
       return data.questions?.[data.q2];
+    });
+    const currentKey = Vue.computed(() => {
+      return data.q2
     });
     const currentSolution = Vue.computed(() => {
       return data.solutions?.[data.q2];
@@ -122,6 +135,7 @@ const app = createApp({
 
     return {
       changePage , 
+      currentKey ,
       currentQuestion , 
       currentSolution,
       currentHints ,
@@ -133,4 +147,4 @@ const app = createApp({
 });
 
 app.use(router);
-app.mount("#app");
+globalThis.vapp = app.mount("#app");

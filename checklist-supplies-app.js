@@ -9,6 +9,7 @@ const app = createApp({
         suppliesData,
         selectedSupplies: JSON.parse(localStorage.getItem('selectedSupplies') ?? '[]'),
         selectedDressCodes: JSON.parse(localStorage.getItem('selectedDressCodes') ?? '[]'),
+        closedQs: JSON.parse(localStorage.getItem('closedQs') ?? '[]'),
       }
     );
 

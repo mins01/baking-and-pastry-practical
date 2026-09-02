@@ -67,6 +67,13 @@
 
   <!-- //meta og -->
 
+  <style>
+    .closed-q{
+      text-decoration: line-through;
+      background-color: #ccc !important;
+    }
+  </style>
+
 
 </head>
 
@@ -184,8 +191,14 @@
         <tbody>
           <tr v-for="(vh,kh) in data.summariesData.baking_body">
             <template v-for="(v,idx) in vh">
-              <th v-if="idx==0" class=" border border-1 table-success position-sticky start-0 text-center text-nowrap" style="white-space: break-spaces;" >
-                <a :href="`./index.html#/?q2=${data.summariesData.baking[kh].key}`">{{v}}</a>
+              <th v-if="idx==0" 
+                class=" border border-1 table-success position-sticky start-0 text-center text-nowrap" 
+                :class="[closedQ(data.summariesData.baking[kh].key)?'closed-q':'']"
+                style="white-space: break-spaces;" >
+                <a :href="`./index.html#/?q2=${data.summariesData.baking[kh].key}`">
+                  <i class="bi" :class="[closedQ(data.summariesData.baking[kh].key)?'bi-eye-slash':'bi-eye']"></i> 
+                  {{v}}
+                </a>
               </th>
               <td v-else class=" border border-1 text-center" style="white-space: break-spaces;" >{{v}}</td>
     

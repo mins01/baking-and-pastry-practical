@@ -60,7 +60,7 @@ const app = createApp({
     
     summaries.baking_labels = [...summaries.baking_labels]
     summaries.pastry_labels = [... ([...summaries.pastry_labels].filter(k=>k!='공정요약'))] // 공정요약만 예외 처리
-    console.log(summaries);
+    // console.log(summaries);
     
     const tempData = {
       baking_heads:summaries.baking.map((el)=>{ return `${el.question.number}. ${el.question.label}`;}),
@@ -75,7 +75,7 @@ const app = createApp({
       pastry_heads:summaries.pastry.map((el)=>{ return `${el.question.number}. ${el.question.label}`;}),
       pastry_labels:summaries.pastry_labels,
       pastry_values:summaries.pastry_labels.map((label)=>{
-        console.log(label,summaries.pastry);
+        // console.log(label,summaries.pastry);
         
         return summaries.pastry.map(
           (el)=>{ 
@@ -118,7 +118,7 @@ const app = createApp({
       pastry:summaries.pastry,
       pastry_sort_by_ovens:[...summaries.pastry].sort((a,b)=>{ return a.summary.오븐 < b.summary.오븐?-1:1; }),
     }
-    console.log(summariesData);
+    // console.log(summariesData);
 
     const data = reactive(
       {
@@ -130,6 +130,7 @@ const app = createApp({
         summariesData,
         q1: '',
         q2: '',
+        closedQs: JSON.parse(localStorage.getItem('closedQs') ?? '[]'),
       }
     );
 
@@ -143,12 +144,15 @@ const app = createApp({
         }
 
 
-    
+    const closedQ = (key)=>{
+      return data.closedQs.includes(key)
+    }
 
 
     return {
     
       linkify,
+      closedQ ,
     
       data ,
     };

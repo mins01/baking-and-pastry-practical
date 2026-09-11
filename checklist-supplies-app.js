@@ -7,16 +7,16 @@ const app = createApp({
       {
         dressCodeData,
         suppliesData,
-        selectedSupplies: JSON.parse(localStorage.getItem('selectedSupplies') ?? '[]'),
-        selectedDressCodes: JSON.parse(localStorage.getItem('selectedDressCodes') ?? '[]'),
-        closedQs: JSON.parse(localStorage.getItem('closedQs') ?? '[]'),
+        selectedSupplies: JSON.parse(localStorage.getItem('bapp-selectedSupplies') ?? '[]'),
+        selectedDressCodes: JSON.parse(localStorage.getItem('bapp-selectedDressCodes') ?? '[]'),
+        closedQs: JSON.parse(localStorage.getItem('bapp-closedQs') ?? '[]'),
       }
     );
 
     watch(
       () => data.selectedSupplies,
       (value) => {
-        localStorage.setItem('selectedSupplies', JSON.stringify(value));
+        localStorage.setItem('bapp-selectedSupplies', JSON.stringify(value));
         // console.log(value);        
       },
       { deep: true }
@@ -24,7 +24,7 @@ const app = createApp({
     watch(
       () => data.selectedDressCodes,
       (value) => {
-        localStorage.setItem('selectedDressCodes', JSON.stringify(value));
+        localStorage.setItem('bapp-selectedDressCodes', JSON.stringify(value));
         // console.log(value);
       },
       { deep: true }

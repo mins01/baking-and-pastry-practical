@@ -130,7 +130,7 @@ const app = createApp({
         summariesData,
         q1: '',
         q2: '',
-        closedQs: JSON.parse(localStorage.getItem('closedQs') ?? '[]'),
+        closedQs: JSON.parse(localStorage.getItem('bapp-closedQs') ?? '[]'),
       }
     );
 

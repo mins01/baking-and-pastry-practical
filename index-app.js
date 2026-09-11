@@ -31,7 +31,7 @@ const app = createApp({
         categories,
         q1: '',
         q2: '',
-        closedQs: JSON.parse(localStorage.getItem('closedQs') ?? '[]'),
+        closedQs: JSON.parse(localStorage.getItem('bapp-closedQs') ?? '[]'),
       }
     );
 
@@ -79,7 +79,7 @@ const app = createApp({
     watch(
       () => data.closedQs,
       (value) => {
-        localStorage.setItem('closedQs', JSON.stringify(value));
+        localStorage.setItem('bapp-closedQs', JSON.stringify(value));
         // console.log(value);        
       },
       { deep: true }
